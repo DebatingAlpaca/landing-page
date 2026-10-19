@@ -10,11 +10,15 @@
 :root{
   --bg:#0a0a0f; --panel:#11121a; --accent:#7c3aed; --accent-2:#22d3ee; --text:#e5e7eb; --muted:#9ca3af;
 }
+[data-theme="light"]{
+  --bg:#f8fafc; --panel:#ffffff; --accent:#7c3aed; --accent-2:#0891b2; --text:#0f172a; --muted:#64748b;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:radial-gradient(1200px 800px at 20% -10%, #1a122e 0%, transparent 60%), radial-gradient(1000px 600px at 100% 0%, #0e2a3a 0%, transparent 55%), var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(1200px 800px at 20% -10%, #1a122e 0%, transparent 60%), radial-gradient(1000px 600px at 100% 0%, #0e2a3a 0%, transparent 55%), var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
 a{color:var(--accent-2);text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 24px}
 header{position:sticky;top:0;backdrop-filter:blur(10px);background:rgba(10,10,15,.7);border-bottom:1px solid rgba(255,255,255,.06);z-index:10}
+[data-theme="light"] header{background:rgba(255,255,255,.7);border-bottom:1px solid rgba(0,0,0,.06)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-family:"JetBrains Mono",monospace;font-size:.9rem}
 .brand{color:var(--text);letter-spacing:.04em}
 .brand span{color:var(--accent)}
@@ -25,31 +29,44 @@ h1 .name{color:var(--accent-2)}
 .subtitle{font-size:1.15rem;color:var(--muted);margin:16px 0 28px}
 .badges{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
 .badge{background:var(--panel);border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;font-family:"JetBrains Mono";font-size:.8rem}
+[data-theme="light"] .badge{border:1px solid rgba(0,0,0,.08)}
 .cta{display:flex;gap:12px}
 .btn{padding:12px 18px;border-radius:12px;font-weight:600;transition:.2s;cursor:pointer}
 .btn.primary{background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none}
 .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--text)}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.25)}
 .panel{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+[data-theme="light"] .panel{background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 30px rgba(0,0,0,.08)}
 .terminal{font-family:"JetBrains Mono";background:#020208;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+[data-theme="light"] .terminal{background:#0f172a;color:#e2e8f0}
 .term-bar{height:36px;background:#0f111a;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 12px;gap:6px}
-.dot{width:10px;height:10px;border-radius:50%}
-.d1{background:#ff5f57}.d2{background:#ffbd2e}.d3{background:#28c940}
 .term-body{padding:16px;font-size:.9rem;white-space:pre-wrap}
 .cursor{display:inline-block;width:8px;height:1.1em;background:var(--accent-2);margin-left:2px;animation:blink 1s step-end infinite}
 @keyframes blink{50%{opacity:0}}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:80px 0}
-.card{background:var(--panel);border:1px solid rgba(255,255,255,.06);padding:20px;border-radius:16px}
+.section{padding:80px 0}
+.section h2{font-size:2rem;margin-bottom:24px;font-family:"JetBrains Mono"}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid rgba(255,255,255,.06);padding:20px;border-radius:16px;opacity:0;transform:translateY(20px);transition:.6s}
+.card.visible{opacity:1;transform:translateY(0)}
 .card h3{font-family:"JetBrains Mono";color:var(--accent-2);margin-bottom:8px;font-size:.95rem}
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.stack-item{background:var(--panel);border:1px solid rgba(255,255,255,.06);padding:14px;border-radius:12px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.contact-form{background:var(--panel);border:1px solid rgba(255,255,255,.06);padding:20px;border-radius:16px}
+.contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:transparent;color:var(--text);margin-bottom:12px;font-family:Inter}
+.theme-toggle{cursor:pointer;padding:8px 12px;border-radius:8px;background:var(--panel);border:1px solid rgba(255,255,255,.1)}
 footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--muted);font-size:.85rem;text-align:center}
-@media(max-width:900px){.hero{grid-template-columns:1fr;padding:70px 0}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:70px 0}.contact{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header>
   <div class="container nav">
     <div class="brand">&lt;/&gt; <span>joao.pedro</span></div>
-    <div style="font-family:'JetBrains Mono';color:var(--muted)">CComp • FECAP</div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <div style="font-family:'JetBrains Mono';color:var(--muted)">CComp • FECAP</div>
+      <button class="theme-toggle" id="themeToggle">🌗 Tema</button>
+    </div>
   </div>
 </header>
 
@@ -67,55 +84,78 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--mut
       </div>
       <div class="cta">
         <a class="btn primary" href="#projetos">Ver projetos</a>
-        <a class="btn ghost" href="mailto:joao.pedro@email.com">Contato</a>
+        <a class="btn ghost" href="#contato">Contato</a>
       </div>
     </div>
     <div class="panel">
       <div class="terminal">
-        <div class="term-bar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span></div>
+        <div class="term-bar"><span style="width:10px;height:10px;background:#ff5f57;border-radius:50%"></span><span style="width:10px;height:10px;background:#ffbd2e;border-radius:50%"></span><span style="width:10px;height:10px;background:#28c940;border-radius:50%"></span></div>
         <div class="term-body" id="term">$ whoami<br>$ cat about.md<br><br><b>Nome:</b> João Pedro da Silva<br><b>Curso:</b> Ciência da Computação<br><b>Universidade:</b> FECAP<br><b>Stack:</b> JS/TS, Python, React, Node<br><br><span id="typing"></span><span class="cursor"></span></div>
       </div>
     </div>
   </section>
 
-  <section id="projetos" class="grid">
-    <div class="card">
-      <h3>&gt; projetos</h3>
-      <p>APIs RESTful, automações e dashboards. Código versionado, testado e documentado.</p>
+  <section class="section" id="sobre">
+    <h2>&gt; sobre / stack</h2>
+    <p style="color:var(--muted);max-width:700px;margin-bottom:24px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu estudo algoritmos, arquitetura de software e design de interfaces. Gosto de transformar problemas complexos em soluções simples e testáveis.</p>
+    <div class="stack-grid">
+      <div class="stack-item"><b>Frontend</b><br><small>React, Next.js, Tailwind</small></div>
+      <div class="stack-item"><b>Backend</b><br><small>Node.js, Python, FastAPI</small></div>
+      <div class="stack-item"><b>Data</b><br><small>SQL, PostgreSQL, REST</small></div>
+      <div class="stack-item"><b>Tools</b><br><small>Git, Docker, VS Code</small></div>
     </div>
-    <div class="card">
-      <h3>&gt; foco</h3>
-      <p>Arquitetura limpa, performance e acessibilidade. Menos hype, mais resultado.</p>
+  </section>
+
+  <section class="section" id="projetos">
+    <h2>&gt; projetos</h2>
+    <div class="grid">
+      <div class="card"><h3>Projeto Alpha</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sistema de automação com API REST.</p><small style="color:var(--muted)">React • Node</small></div>
+      <div class="card"><h3>Projeto Beta</h3><p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dashboard analítico.</p><small style="color:var(--muted)">Python • SQL</small></div>
+      <div class="card"><h3>Projeto Gamma</h3><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco. Ferramenta CLI.</p><small style="color:var(--muted)">TypeScript • Git</small></div>
+      <div class="card"><h3>Projeto Delta</h3><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p><small style="color:var(--muted)">Next.js • Tailwind</small></div>
     </div>
-    <div class="card">
-      <h3>&gt; aprendizado</h3>
-      <p>Sempre estudando algoritmos, sistemas distribuídos e design de interfaces.</p>
+  </section>
+
+  <section class="section" id="contato">
+    <h2>&gt; contato</h2>
+    <div class="contact">
+      <div>
+        <p style="color:var(--muted)">Vamos conversar sobre código, projetos ou oportunidades. Lorem ipsum dolor sit amet.</p>
+        <ul style="list-style:none;padding:0;margin-top:16px;font-family:'JetBrains Mono';font-size:.9rem">
+          <li>✉️ joao.pedro@email.com</li>
+          <li>🐙 github.com/DebatingAlpaca</li>
+          <li>🔗 linkedin.com/in/joaopedro</li>
+        </ul>
+      </div>
+      <div class="contact-form">
+        <input placeholder="Seu nome">
+        <input placeholder="Seu e-mail">
+        <textarea rows="4" placeholder="Sua mensagem"></textarea>
+        <button class="btn primary">Enviar</button>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  © 2025 João Pedro da Silva — FECAP CComp • feito com HTML/CSS puro e um pouco de carinho por devs
+  © 2025 João Pedro da Silva — FECAP CComp • feito com HTML/CSS puro
 </footer>
 
 <script>
-const lines = [
-  "const focus = ['resolver problemas', 'escrever código legível', 'aprender sempre'];",
-  "console.log('Olá, mundo!');"
-];
-let i=0, j=0;
-const el=document.getElementById('typing');
-function type(){
-  if(i>=lines.length) return;
-  if(j<=lines[i].length){
-    el.textContent=lines[i].slice(0,j);
-    j++;
-    setTimeout(type, 35);
-  }else{
-    i++; j=0; setTimeout(type, 600);
-  }
-}
-setTimeout(type, 800);
+const lines = ["const focus = ['resolver problemas','escrever código legível','aprender sempre'];","console.log('Olá, mundo!');"];
+let i=0,j=0; const el=document.getElementById('typing');
+function type(){ if(i>=lines.length)return; if(j<=lines[i].length){el.textContent=lines[i].slice(0,j);j++;setTimeout(type,35);}else{i++;j=0;setTimeout(type,600);} }
+setTimeout(type,800);
+
+// theme toggle
+const toggle=document.getElementById('themeToggle');
+const saved=localStorage.getItem('theme');
+if(saved) document.documentElement.setAttribute('data-theme',saved);
+toggle.onclick=()=>{ const cur=document.documentElement.getAttribute('data-theme'); const next=cur==='light'?'':'light'; document.documentElement.setAttribute('data-theme',next); localStorage.setItem('theme',next); }
+
+// reveal on scroll
+const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target);} })},{threshold:.15 });
+document.querySelectorAll('.card').forEach(c=>obs.observe(c));
 </script>
 </body>
 </html>
