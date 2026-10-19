@@ -6,7 +6,7 @@ Landing page pessoal de portfólio. Estudante de Ciência da Computação – FE
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-## Visão Geral
+## 👁️ Visão Geral
 
 A página apresenta:
 - Seção inicial com nome, curso e áreas de atuação
@@ -14,7 +14,7 @@ A página apresenta:
 - Seções de projetos, foco e aprendizado
 - Design responsivo com suporte a temas claro e escuro
 
-## Execução Local
+## 🚀 Execução Local
 
 ```bash
 # dentro da pasta do repositório
@@ -24,7 +24,7 @@ python -m http.server 8000
 
 Alternativamente, abra o arquivo `index.html` diretamente no navegador.
 
-## Estrutura
+## 📁 Estrutura
 
 ```
 landing-page/
@@ -32,18 +32,18 @@ landing-page/
 └─ README.md
 ```
 
-## Publicação com GitHub Pages
+## 🌐 Publicação com GitHub Pages
 
 1. Repositório → Settings → Pages
 2. Source: branch main, pasta /root
 3. O arquivo index.html será a página inicial
 
-## Autor
+## 👤 Autor
 
 João Pedro da Silva  
 Ciência da Computação – FECAP  
 GitHub: [@DebatingAlpaca](https://github.com/DebatingAlpaca)
 
-## Licença
+## 📄 Licença
 
 Uso pessoal. Livre para estudo e inspiração.
